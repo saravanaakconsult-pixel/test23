@@ -182,7 +182,7 @@
         message: form.message.value
       };
       
-      fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
+      fetch("https://script.google.com/macros/s/AKfycbxKgwerB2PimhpP01wq4tl5Qk8jmqZUErzFSk7bVNM1c41lwCwUG2XyadKrRRHuPB9F5A/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
