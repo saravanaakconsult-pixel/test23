@@ -23,7 +23,7 @@
     .logo-img {
       display: block;
       margin: 0 auto 15px auto;
-      max-width: 150px;  /* Resize logo neatly */
+      max-width: 150px;
       height: auto;
     }
     nav {
@@ -60,12 +60,17 @@
       display: grid;
       gap: 12px;
       max-width: 500px;
-      margin: auto;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     input, textarea {
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      font-size: 1em;
     }
     button {
       padding: 12px;
@@ -75,6 +80,9 @@
       font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
+    }
+    button:hover {
+      background: #0c4db3;
     }
     footer {
       text-align: center;
@@ -155,7 +163,7 @@
       <textarea name="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p id="response"></p>
+    <p id="response" style="text-align:center; font-weight:bold;"></p>
   </section>
 
   <!-- Footer -->
