@@ -1,299 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>CrystalCore Business Solutions (CCBS)</title>
   <meta name="description" content="CrystalCore Business Solutions (CCBS) — Business Analyst & Consultant Service. Clarity, precision, and innovation for growth, efficiency, and digital excellence.">
 
   <style>
-    :root {
-      --purple: #2A1B47;
-      --yellow: #FFD700;
-      --white: #FFFFFF;
-      --gray-bg: #F6F7FB;
-      --shadow: 0 8px 24px rgba(16,24,40,.06);
+    /* ===== Brand Palette ===== */
+    :root{
+      --purple:#2A1B47;     /* brand primary */
+      --yellow:#FFD700;     /* accent */
+      --white:#FFFFFF;
+      --bg:#F6F7FB;         /* page background */
+      --ink:#3B3B3B;        /* paragraph text */
+      --card:#FFFFFF;
+      --stroke:#E9E9EF;
+      --shadow:0 12px 30px rgba(16,24,40,.08);
     }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--gray-bg);
-      color: var(--purple);
-      line-height: 1.6;
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    a { color: inherit; }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Header */
-    header {
-      background: var(--white);
-      color: var(--purple);
-      text-align: center;
-      padding: 28px 20px 36px;
-      border-bottom: 2px solid #f0f0f0;
+    /* ===== Header ===== */
+    header{
+      background:var(--white);
+      border-bottom:1px solid var(--stroke);
     }
-    .logo-img {
-      height: clamp(84px, 10vw, 120px);
-      width: auto;
-      margin-bottom: 10px;
+    .header-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:18px 0;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
-      font-weight: 800;
-      color: var(--purple);
+    .brand{
+      display:flex;align-items:center;gap:14px;min-width:0;
     }
-    header p {
-      margin-top: 8px;
-      font-size: 1.1em;
-      color: var(--purple);
+    .brand img.logo{
+      height:clamp(100px,10vw,140px); /* bigger, scales on large screens */
+      width:auto;display:block;
     }
-
-    /* Navigation */
-    nav {
-      background: var(--white);
-      text-align: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #eee;
+    .brand-title{
+      display:flex;flex-direction:column;gap:6px;
     }
-    nav a {
-      color: var(--purple);
-      margin: 0 15px;
-      font-weight: bold;
-      text-decoration: none;
+    .brand-title h1{
+      margin:0;color:var(--purple);
+      font-weight:800;letter-spacing:.2px;
+      font-size: clamp(22px, 2.8vw, 36px);
+      line-height:1.15;
     }
-    nav a:hover {
-      color: #FFD700; /* hover yellow accent */
+    .brand-title p{
+      margin:0;color:var(--purple);
+      font-size: clamp(13px, 1.4vw, 16px);
+      opacity:.95
     }
 
-    /* Sections */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
+    nav.main-nav{display:flex;gap:22px;flex-wrap:wrap}
+    nav.main-nav a{
+      color:var(--purple);text-decoration:none;font-weight:700
     }
-    section { padding: 36px 0 8px; }
-    h2 { color: var(--purple); margin-bottom: 12px; }
-    .lead { color: #555; }
+    nav.main-nav a:hover{color:var(--yellow)}
 
-    /* Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--white);
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-    }
-    .card h3 { margin-top: 0; font-size: 18px; }
+    /* ===== Hero spacer (thin underline) ===== */
+    .nav-underline{border-top:1px solid var(--stroke)}
 
-    /* Bullets */
-    .card ul { list-style: none; padding: 0; margin: 10px 0 0; }
-    .card li {
-      display: flex; align-items: flex-start; gap: 8px; margin: 6px 0;
-    }
-    .card li::before {
-      content: "•";
-      font-weight: 900;
-      color: var(--purple);
-      transform: translateY(2px);
-    }
+    /* ===== Sections ===== */
+    section{padding:36px 0}
+    h2{color:var(--purple);font-size: clamp(20px, 2.6vw, 28px);margin:0 0 12px}
+    p.lead{color:#565b65;margin-top:6px}
 
-    /* Why Section */
-    .why ul { list-style: none; padding: 0; }
-    .why li::before { content: "✅ "; }
+    /* ===== Services grid ===== */
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px
+    }
+    .card{
+      background:var(--card);border:1px solid var(--stroke);
+      border-radius:16px;padding:20px;box-shadow:var(--shadow)
+    }
+    .card h3{margin:0 0 8px;color:var(--purple);font-size:18px}
+    .card ul{list-style:none;margin:8px 0 0;padding:0}
+    .card li{display:flex;gap:8px;margin:6px 0}
+    .card li::before{content:"•";color:var(--purple);font-weight:900;transform:translateY(1px)}
 
-    /* Form */
-    form {
-      display: grid;
-      gap: 12px;
-      max-width: 520px;
-      margin: 18px auto 0;
-      padding: 20px;
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
+    /* ===== Client Info & Service Request (two column) ===== */
+    .split{
+      display:grid;gap:24px;
+      grid-template-columns: 1.05fr .95fr; /* form bigger than help block */
     }
-    input, textarea {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    button {
-      padding: 12px;
-      border: none;
-      background: var(--purple);
-      color: var(--white);
-      font-weight: 700;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-    button:hover { background: #FFD700; color: var(--purple); }
+    @media(max-width:900px){ .split{grid-template-columns:1fr} }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      background: var(--purple);
-      color: var(--white);
-      padding: 20px;
-      margin-top: 30px;
+    .form-card{
+      background:var(--card);border:1px solid var(--stroke);
+      border-radius:16px;box-shadow:var(--shadow);padding:22px
     }
-    footer a { color: #FFD700; text-decoration: none; }
+    .form-card h3{margin:0 0 6px;color:var(--purple);font-size:20px}
+    .muted{color:#6b7280;margin:0 0 14px;font-size:14px}
+
+    form.request{
+      display:grid;gap:12px
+    }
+    .group{display:grid;gap:10px}
+    label.small{font-weight:700;color:#3f3f46}
+    input[type="text"], input[type="email"], input[type="tel"], textarea{
+      width:100%;padding:12px 12px;border-radius:10px;
+      border:1px solid #d7d7df;background:#fff;font-size:15px
+    }
+    textarea{min-height:110px;resize:vertical}
+    .services-list{
+      display:grid;grid-template-columns:1fr;gap:8px;margin-top:4px
+    }
+    .check{
+      display:flex;align-items:flex-start;gap:10px;
+      padding:8px 10px;border:1px solid #e7e7ee;border-radius:10px;background:#fcfcff
+    }
+    .check input{margin-top:2px}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+    .btn{
+      appearance:none;border:none;cursor:pointer;border-radius:999px;
+      padding:12px 18px;font-weight:800
+    }
+    .btn-primary{background:var(--purple);color:#fff}
+    .btn-primary:hover{background:#23163a}
+    .btn-secondary{background:var(--yellow);color:#1c1c1c}
+    .btn-secondary:hover{filter:brightness(0.96)}
+
+    /* ===== Help block (right side) ===== */
+    .help-card{
+      background:var(--card);border:1px solid var(--stroke);
+      border-radius:16px;box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:16px;justify-content:center
+    }
+    .help-title{
+      font-size: clamp(18px, 2.1vw, 22px);
+      font-weight:900;color:#111;margin:0;line-height:1.3
+    }
+    .socials{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .socials a{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:999px;border:1px solid var(--stroke);
+      background:#fff;color:var(--purple);text-decoration:none
+    }
+    .socials a:hover{background:var(--yellow);border-color:var(--yellow);color:#111}
+
+    .mini-brand{
+      display:flex;align-items:center;gap:10px;margin-top:4px
+    }
+    .mini-brand img{height:40px;width:auto;display:block}
+    .mini-brand span{color:var(--purple);font-weight:900}
+
+    /* ===== Footer ===== */
+    footer{
+      text-align:center;background:var(--purple);color:#fff;padding:22px;margin-top:36px
+    }
+    footer a{color:var(--yellow);text-decoration:none}
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ===== Header ===== -->
   <header>
-    <img src="logo.svg" alt="CrystalCore Business Solutions Logo" class="logo-img">
-    <h1>CrystalCore Business Solutions (CCBS)</h1>
-    <p>Your strategic partner in clarity, precision, and innovation</p>
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="logo.svg" alt="CrystalCore Business Solutions Logo" class="logo">
+        <div class="brand-title">
+          <h1>CrystalCore Business Solutions (CCBS)</h1>
+          <p>Your strategic partner in clarity, precision, and innovation</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#request">Request</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-underline"></div>
   </header>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#why">Why Choose Us</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- ABOUT -->
-  <section id="about" class="container">
-    <h2>About Us</h2>
-    <p class="lead">
-      CrystalCore Business Solutions (CCBS) is your strategic partner in navigating business complexity with clarity,
-      precision, and innovation. We specialize in empowering organizations through tailored consulting services that
-      drive growth, efficiency, and digital excellence.
-    </p>
+  <!-- ===== About ===== -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="lead">
+        CrystalCore Business Solutions (CCBS) is your strategic partner in navigating business
+        complexity with clarity, precision, and innovation. We specialize in empowering organizations
+        through tailored consulting services that drive growth, efficiency, and digital excellence.
+      </p>
+    </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="container">
-    <h2>Our Services</h2>
-    <div class="grid">
-      <div class="card"><h3>🔍 Business Analysis & Planning</h3>
-        <ul>
-          <li>Planning & monitoring</li>
-          <li>BRD / FRD / SRS documentation</li>
-          <li>Business health check-up</li>
-        </ul>
-      </div>
-      <div class="card"><h3>🔄 Business Transformation</h3>
-        <ul>
-          <li>Transformation roadmaps</li>
-          <li>Change management</li>
-          <li>Process re-engineering</li>
-        </ul>
-      </div>
-      <div class="card"><h3>💻 Digital & IT Consulting</h3>
-        <ul>
-          <li>Digital strategy</li>
-          <li>CRM & ERP implementation</li>
-          <li>Workflow automation</li>
-        </ul>
-      </div>
-      <div class="card"><h3>📊 Financial & Risk Advisory</h3>
-        <ul>
-          <li>Financial planning</li>
-          <li>Risk mitigation</li>
-          <li>Risk analysis</li>
-        </ul>
-      </div>
-      <div class="card"><h3>📈 Market Research</h3>
-        <ul>
-          <li>Competitor analysis</li>
-          <li>Strategic growth roadmaps</li>
-        </ul>
-      </div>
-      <div class="card"><h3>📉 Data Analysis</h3>
-        <ul>
-          <li>Dashboards</li>
-          <li>Data cleansing</li>
-          <li>Decision insights</li>
-        </ul>
-      </div>
-      <div class="card"><h3>🛠 Project Management</h3>
-        <ul>
-          <li>Planning</li>
-          <li>Stakeholder management</li>
-          <li>Agile user stories</li>
-        </ul>
-      </div>
-      <div class="card"><h3>📑 Compliance & Documentation</h3>
-        <ul>
-          <li>MSME & GST guidance</li>
-          <li>Certification & regulatory support</li>
-        </ul>
+  <!-- ===== Services ===== -->
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card"><h3>🔍 Business Analysis & Planning</h3>
+          <ul><li>Planning & monitoring</li><li>BRD / FRD / SRS documentation</li><li>Business health check-up</li></ul>
+        </div>
+        <div class="card"><h3>🔄 Business Transformation</h3>
+          <ul><li>Transformation roadmaps</li><li>Change management</li><li>Process re-engineering</li></ul>
+        </div>
+        <div class="card"><h3>💻 Digital & IT Consulting</h3>
+          <ul><li>Digital strategy</li><li>CRM & ERP implementation</li><li>Workflow automation</li></ul>
+        </div>
+        <div class="card"><h3>📊 Financial & Risk Advisory</h3>
+          <ul><li>Financial planning</li><li>Risk mitigation</li><li>Risk analysis</li></ul>
+        </div>
+        <div class="card"><h3>📈 Market Research</h3>
+          <ul><li>Competitor analysis</li><li>Strategic growth roadmaps</li></ul>
+        </div>
+        <div class="card"><h3>📉 Data Analysis</h3>
+          <ul><li>Dashboards & insights</li><li>Data cleansing</li></ul>
+        </div>
+        <div class="card"><h3>🛠 Project Management</h3>
+          <ul><li>Stakeholder management</li><li>Agile user stories</li></ul>
+        </div>
+        <div class="card"><h3>📑 Compliance & Documentation</h3>
+          <ul><li>MSME & GST guidance</li><li>Certification & regulatory support</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY -->
-  <section id="why" class="container why">
-    <h2>Why Choose CrystalCore?</h2>
-    <ul>
-      <li>Clear business planning</li>
-      <li>Smart digital transformation</li>
-      <li>Actionable market insights</li>
-      <li>Reliable project support</li>
-      <li>Compliance made easy</li>
-    </ul>
-    <p class="lead">We turn ideas into impact—efficiently, professionally, and with your goals in mind.</p>
+  <!-- ===== Client Information & Service Request ===== -->
+  <section id="request">
+    <div class="container">
+      <h2>Client Information & Service Request</h2>
+      <div class="split">
+        <!-- Left: Form -->
+        <div class="form-card">
+          <h3>Client Details</h3>
+          <p class="muted">Tell us what you need. We’ll get back within a business day.</p>
+
+          <form id="requestForm" class="request" novalidate>
+            <div class="group">
+              <label class="small" for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your Name" required>
+            </div>
+
+            <div class="group">
+              <label class="small" for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="e.g., +91 98XXXXXXX" required>
+            </div>
+
+            <div class="group">
+              <label class="small" for="email">Email ID</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="group">
+              <label class="small">Service Selection</label>
+              <div class="services-list">
+                <label class="check"><input type="checkbox" name="services" value="Business Analysis & Consulting"> Business Analysis & Consulting</label>
+                <label class="check"><input type="checkbox" name="services" value="Finance & Estimation"> Finance & Estimation</label>
+                <label class="check"><input type="checkbox" name="services" value="Tax & Compliance"> Tax & Compliance</label>
+                <label class="check"><input type="checkbox" name="services" value="Data & Automation"> Data & Automation</label>
+                <label class="check"><input type="checkbox" name="services" value="Digital Marketing"> Digital Marketing</label>
+                <label class="check"><input type="checkbox" name="services" value="Client Support & Operations"> Client Support & Operations</label>
+              </div>
+            </div>
+
+            <div class="group">
+              <label class="small" for="company">Company Name</label>
+              <input id="company" name="company" type="text" placeholder="Company Name">
+            </div>
+
+            <div class="group">
+              <label class="small" for="message">Additional Details</label>
+              <textarea id="message" name="message" placeholder="Briefly describe your requirement"></textarea>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn btn-primary">Submit Form</button>
+              <a class="btn btn-secondary" href="mailto:saravana.akconsult@gmail.com">Email Us</a>
+            </div>
+
+            <p id="formResponse" class="muted" style="font-weight:700;margin-top:6px;"></p>
+          </form>
+        </div>
+
+        <!-- Right: Help & Socials -->
+        <div class="help-card">
+          <h3 class="help-title">📞💬 Need help? Connect with us — 24/7 support via call and chat.</h3>
+
+          <div class="socials">
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram" title="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="#" aria-label="Facebook" title="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.4V12h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12"/></svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="#" aria-label="WhatsApp" title="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3.9A10 10 0 0 0 3.4 17.4L2 22l4.7-1.2A10 10 0 1 0 20 3.9ZM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm4-5.7c-.2-.1-1-.5-1.1-.6s-.3-.1-.5.1c-.1.2-.6.6-.7.7-.1.1-.3.1-.5 0s-1-.4-1.9-1.2-1.4-1.8-1.5-2c-.1-.2 0-.3.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s0-.3-.1-.4c0-.1-.5-1.2-.7-1.7-.2-.5-.4-.4-.5-.4h-.4c-.1 0-.3.1-.5.2-.2.2-.6.6-.6 1.4s.6 1.6.7 1.7c.1.2 1.2 1.9 2.8 3 1.6 1.1 2.7 1.3 3.1 1.4.4 0 .9 0 1.2-.1.3-.1 1-.5 1.1-.9.1-.4.1-.8.1-.9 0-.1-.2-.1-.4-.2Z"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.75H4.06V20h2.88V8.75Zm.2-4.6a1.78 1.78 0 1 1-3.56 0 1.78 1.78 0 0 1 3.56 0ZM20 13.9c0-3.02-1.61-4.42-3.76-4.42-1.73 0-2.5.95-2.94 1.62V8.75H10.5c.04.95 0 11.25 0 11.25h2.8v-6.28c0-.34.02-.69.13-.93.29-.69.95-1.41 2.06-1.41 1.45 0 2.03 1.06 2.03 2.62V20H20v-6.1Z"/></svg>
+            </a>
+          </div>
+
+          <div class="mini-brand">
+            <img src="logo.svg" alt="CCBS">
+            <span>CrystalCore • 24/7 support</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="container">
-    <h2>Contact Us</h2>
-    <p>📞 24/7 Support via call & chat</p>
-    <p>Email: <a href="mailto:saravana.akconsult@gmail.com">saravana.akconsult@gmail.com</a></p>
-    <p>Phone: <a href="tel:+919840407627">+91 98404 07627</a></p>
-
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="tel" name="phone" placeholder="Your Phone Number" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p id="response" style="text-align:center; font-weight:bold;"></p>
+  <!-- ===== Contact ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p class="lead">Email: <a href="mailto:saravana.akconsult@gmail.com">saravana.akconsult@gmail.com</a> &nbsp;•&nbsp; Phone: <a href="tel:+919840407627">+91 98404 07627</a></p>
+    </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== Footer ===== -->
   <footer>
-    <p>© 2025 CrystalCore Business Solutions — All Rights Reserved</p>
+    © 2025 CrystalCore Business Solutions — All Rights Reserved
   </footer>
 
-  <!-- Google Apps Script form submission -->
+  <!-- ===== Apps Script submit (includes services) ===== -->
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e){
+    const form = document.getElementById('requestForm');
+    const resp = document.getElementById('formResponse');
+
+    form.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      const form = e.target;
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        message: form.message.value
+
+      const selected = Array.from(form.querySelectorAll('input[name="services"]:checked'))
+                      .map(cb=>cb.value);
+
+      const payload = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        company: form.company?.value?.trim() || "",
+        message: form.message.value.trim(),
+        services: selected.join(", ")
       };
-      
-      fetch("https://script.google.com/macros/s/AKfycbxKgwerB2PimhpP01wq4tl5Qk8jmqZUErzFSk7bVNM1c41lwCwUG2XyadKrRRHuPB9F5A/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.json())
-      .then(response => {
-        document.getElementById("response").textContent = "✅ Message sent successfully!";
+
+      resp.textContent = "Sending…";
+      try{
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxKgwerB2PimhpP01wq4tl5Qk8jmqZUErzFSk7bVNM1c41lwCwUG2XyadKrRRHuPB9F5A/exec", {
+          method:"POST",
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify(payload)
+        });
+        await res.json();
+        resp.textContent = "✅ Thanks! Your request has been submitted.";
         form.reset();
-      })
-      .catch(err => {
-        document.getElementById("response").textContent = "❌ Error sending message.";
-      });
+      }catch(err){
+        resp.textContent = "❌ Error submitting. Please try again or email us.";
+      }
     });
   </script>
 </body>
