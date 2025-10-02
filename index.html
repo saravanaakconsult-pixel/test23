@@ -16,6 +16,7 @@
       --card:#FFFFFF;
       --stroke:#E9E9EF;
       --shadow:0 8px 20px rgba(16,24,40,.08);
+      --soft:#FAFAFD; /* very light gray for highlight sections */
     }
 
     *{box-sizing:border-box}
@@ -89,7 +90,6 @@
       box-shadow:var(--shadow);
     }
     .card h3{margin:0 0 10px;color:var(--purple);font-size:18px;display:flex;align-items:center;gap:8px}
-    .card h3 img.icon{height:20px;width:20px;display:inline-block}
     .card ul{list-style:none;padding:0;margin:0}
     .card li{margin:6px 0;display:flex;gap:6px}
     .card li::before{content:"•";color:var(--purple);font-weight:900}
@@ -153,6 +153,20 @@
       text-align:center;background:var(--purple);color:var(--white);
       padding:20px;margin-top:30px
     }
+
+    /* >>> Your two requested background tweaks <<< */
+    /* About Us = white block with thin dividers */
+    #about{
+      background:#fff;
+      border-top:1px solid var(--stroke);
+      border-bottom:1px solid var(--stroke);
+    }
+    /* Why Choose Us = soft light-gray highlight */
+    #why{
+      background:var(--soft);
+      border-top:1px solid var(--stroke);
+      border-bottom:1px solid var(--stroke);
+    }
   </style>
 </head>
 <body>
@@ -173,7 +187,7 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About -->
+  <!-- About (white block with thin dividers) -->
   <section id="about">
     <div class="container">
       <h2>About Us</h2>
@@ -195,7 +209,7 @@
     </div>
   </section>
 
-  <!-- Services (A → Z with Digital Marketing) -->
+  <!-- Services (A → Z; Digital Marketing card replaced with your new text) -->
   <section id="services">
     <div class="container">
       <h2>Our Services</h2>
@@ -205,8 +219,9 @@
         <div class="card"><h3>📑 Compliance & Documentation</h3><ul><li>MSME & GST guidance</li><li>Certification & regulatory support</li></ul></div>
         <div class="card"><h3>📉 Data Analysis</h3><ul><li>Dashboards & insights</li><li>Data cleansing</li></ul></div>
         <div class="card"><h3>💻 Digital & IT Consulting</h3><ul><li>Digital strategy</li><li>CRM & ERP implementation</li><li>Workflow automation</li></ul></div>
+        <!-- REPLACED CARD -->
         <div class="card">
-          <h3><img class="icon" src="digital-marketing.png" alt=""> Digital Marketing</h3>
+          <h3>📣 Digital Marketing & Online Visibility</h3>
           <ul>
             <li>SEO & Content Strategy</li>
             <li>Social Media Campaigns</li>
@@ -220,7 +235,7 @@
     </div>
   </section>
 
-  <!-- Why Choose Us -->
+  <!-- Why Choose Us (light gray highlight) -->
   <section id="why">
     <div class="container">
       <h2>Why Choose Us</h2>
