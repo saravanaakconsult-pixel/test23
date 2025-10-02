@@ -8,11 +8,8 @@
 
   <style>
     :root{
-      --ccbs-yellow:#FFD700;
       --ccbs-purple:#6A0DAD;
       --ccbs-purple-dark:#5a0aa1;
-      --ccbs-black:#000000;
-      --ccbs-white:#FFFFFF;
       --bg:#f6f7fb;
       --text:#222;
       --muted:#5b5b5b;
@@ -37,18 +34,20 @@
       text-align:center;
       padding: 30px 20px 36px;
     }
+    /* ✅ Clean logo: no white box, no padding */
     .logo-img{
-      background:#fff;
-      padding:8px;
-      border-radius:16px;
-      box-shadow:0 10px 30px rgba(106,13,173,.20);
+      height: clamp(84px, 9vw, 128px);
+      width:auto;
       display:inline-block;
       margin-bottom:12px;
-      height: clamp(72px, 8vw, 108px);
-      width:auto;
+      /* subtle separation from header without a white card */
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+      border-radius: 0;        /* ensure no rounding from old styles */
+      background: transparent; /* ensure no white background */
+      padding: 0;              /* remove extra white area on mobile */
     }
-    header h1{ margin:0; font-size: 2em; font-weight:800; }
-    header p{ margin-top:8px; font-size:1.05em; }
+    header h1{ margin:0; font-size: clamp(24px, 3.2vw, 36px); font-weight:800; }
+    header p{ margin-top:8px; font-size: clamp(14px, 1.4vw, 18px); }
 
     /* Nav */
     nav{
@@ -101,7 +100,7 @@
 
     /* Why Section */
     .why ul { list-style:none; padding:0; }
-    .why li::before { content:"✅ "; color:green; }
+    .why li::before { content:"✅ "; }
 
     /* Form */
     form{
@@ -140,13 +139,13 @@
       padding:20px;
       margin-top:30px;
     }
-    footer a{ color: #fff3b0; text-decoration:none; }
   </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header>
+    <!-- Use your existing file name; ideal is a PNG/SVG with transparent background -->
     <img src="logo.png" alt="CrystalCore Business Solutions Logo" class="logo-img">
     <h1>CrystalCore Business Solutions (CCBS)</h1>
     <p>Your strategic partner in clarity, precision, and innovation</p>
@@ -248,7 +247,7 @@
   <section id="contact" class="container">
     <h2>Contact Us</h2>
     <p>📞 24/7 Support via call & chat</p>
-    <p>Email: <a href="mailto:saravana.akconsult@gmail.com">saravana.akconsult@gmail.com</a></p>
+    <p>Email: <a href="mailto:info@crystalcore.com">info@crystalcore.com</a></p>
     <p>Phone: <a href="tel:+919840407627">+91 98404 07627</a></p>
 
     <form id="contactForm">
