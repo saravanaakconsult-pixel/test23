@@ -8,24 +8,32 @@
 
   <style>
     :root {
-      --purple: #2A1B47;
-      --yellow: #FFD700;
-      --white: #FFFFFF;
-      --bg: #F6F7FB;
-      --ink: #3B3B3B;
-      --card: #FFFFFF;
-      --stroke: #E9E9EF;
-      --shadow: 0 8px 20px rgba(16,24,40,.08);
+      --purple:#2A1B47;
+      --yellow:#FFD700;
+      --white:#FFFFFF;
+      --bg:#F6F7FB;
+      --ink:#3B3B3B;
+      --card:#FFFFFF;
+      --stroke:#E9E9EF;
+      --shadow:0 8px 20px rgba(16,24,40,.08);
     }
 
-    body {
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
       margin:0;
       font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+      background:var(--bg);
+      color:var(--ink);
       line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
     a{color:inherit;text-decoration:none}
+    .container{max-width:1000px;margin:0 auto;padding:0 20px}
+    section{padding:36px 0}
+    h2{color:var(--purple);margin:0 0 12px;font-size:clamp(20px,2.4vw,28px)}
+    p.lead{color:#565b65}
 
     /* Header */
     header{
@@ -37,10 +45,8 @@
     .logo{
       height:clamp(120px,12vw,180px);
       width:auto;
-      margin-bottom:10px;
       display:block;
-      margin-left:auto;
-      margin-right:auto;
+      margin:0 auto 10px auto;
     }
     header h1{
       margin:0;
@@ -55,10 +61,11 @@
       opacity:.95;
     }
 
+    /* Nav */
     nav{
       background:var(--white);
       border-top:1px solid var(--stroke);
-      padding:12px;
+      padding:12px 10px;
       text-align:center;
     }
     nav a{
@@ -67,13 +74,6 @@
       font-weight:700;
     }
     nav a:hover{color:var(--yellow)}
-
-    /* Sections */
-    section{padding:36px 0}
-    h2{color:var(--purple);margin:0 0 12px;font-size:clamp(20px,2.4vw,28px)}
-    p.lead{color:#565b65}
-
-    .container{max-width:900px;margin:0 auto;padding:0 20px}
 
     /* Services Grid */
     .grid{
@@ -88,18 +88,24 @@
       padding:18px;
       box-shadow:var(--shadow);
     }
-    .card h3{margin:0 0 8px;color:var(--purple);font-size:18px}
+    .card h3{margin:0 0 10px;color:var(--purple);font-size:18px;display:flex;align-items:center;gap:8px}
+    .card h3 img.icon{height:20px;width:20px;display:inline-block}
     .card ul{list-style:none;padding:0;margin:0}
     .card li{margin:6px 0;display:flex;gap:6px}
     .card li::before{content:"•";color:var(--purple);font-weight:900}
 
-    /* Form */
+    /* Why Choose Us (bullets with icons) */
+    .why-list{list-style:none;margin:10px 0 0;padding:0}
+    .why-list li{margin:8px 0}
+    .why-list strong{color:var(--purple)}
+
+    /* Request Form (compact, fits neatly inside card) */
     .form-card{
       background:var(--card);
       border:1px solid var(--stroke);
       border-radius:14px;
       box-shadow:var(--shadow);
-      padding:20px;
+      padding:28px;               /* more inner space so fields don't touch edges */
       max-width:560px;
       margin:0 auto;
     }
@@ -111,8 +117,9 @@
       width:100%;
       padding:10px 12px;
       border:1px solid #ccc;
-      border-radius:10px;
+      border-radius:10px;         /* slightly smaller than card radius for visual fit */
       font-size:15px;
+      background:#fff;
     }
     textarea{min-height:100px;resize:vertical}
     button{
@@ -120,13 +127,14 @@
       color:var(--white);
       border:none;
       border-radius:999px;
-      padding:12px;
+      padding:12px 18px;
       font-weight:700;
       cursor:pointer;
+      justify-self:start;
     }
     button:hover{background:#1d1233}
 
-    /* Contact */
+    /* Contact + Social icons */
     #contact .socials{
       display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:12px;
     }
@@ -142,11 +150,8 @@
 
     /* Footer */
     footer{
-      text-align:center;
-      background:var(--purple);
-      color:var(--white);
-      padding:20px;
-      margin-top:30px;
+      text-align:center;background:var(--purple);color:var(--white);
+      padding:20px;margin-top:30px
     }
   </style>
 </head>
@@ -163,6 +168,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#why">Why Choose Us</a>
     <a href="#request">Request</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -172,31 +178,66 @@
     <div class="container">
       <h2>About Us</h2>
       <p class="lead">
-        CrystalCore Business Solutions (CCBS) is your strategic partner in navigating business
-        complexity with clarity, precision, and innovation. We empower organizations through
-        tailored consulting services that drive growth, efficiency, and digital excellence.
+        CrystalCore Business Solutions (CCBS) is your strategic partner in navigating business complexity with clarity,
+        precision, and innovation. We empower organizations through tailored consulting services that drive growth,
+        efficiency, and digital excellence.
+      </p>
+      <p class="lead" style="margin-top:8px">
+        We work with:
+        <br>• <strong>Startups</strong> — helping them set strong foundations with lean processes and smart digital adoption.
+        <br>• <strong>Small & Medium Enterprises (SMEs)</strong> — enabling sustainable growth through structured planning, compliance, and market insights.
+        <br>• <strong>Large-scale Businesses</strong> — guiding digital transformation, change management, and operational excellence at scale.
+      </p>
+      <p class="lead" style="margin-top:8px">
+        Our expertise spans <strong>business analysis, transformation strategies, IT consulting, compliance, and market research</strong>,
+        ensuring every client receives customized solutions aligned to their vision and goals.
       </p>
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services (A → Z with Digital Marketing) -->
   <section id="services">
     <div class="container">
       <h2>Our Services</h2>
       <div class="grid">
         <div class="card"><h3>🔍 Business Analysis & Planning</h3><ul><li>Planning & monitoring</li><li>BRD / FRD / SRS documentation</li><li>Business health check-up</li></ul></div>
         <div class="card"><h3>🔄 Business Transformation</h3><ul><li>Transformation roadmaps</li><li>Change management</li><li>Process re-engineering</li></ul></div>
+        <div class="card"><h3>📑 Compliance & Documentation</h3><ul><li>MSME & GST guidance</li><li>Certification & regulatory support</li></ul></div>
+        <div class="card"><h3>📉 Data Analysis</h3><ul><li>Dashboards & insights</li><li>Data cleansing</li></ul></div>
         <div class="card"><h3>💻 Digital & IT Consulting</h3><ul><li>Digital strategy</li><li>CRM & ERP implementation</li><li>Workflow automation</li></ul></div>
+        <div class="card">
+          <h3><img class="icon" src="digital-marketing.png" alt=""> Digital Marketing</h3>
+          <ul>
+            <li>SEO & Content Strategy</li>
+            <li>Social Media Campaigns</li>
+            <li>Performance Analytics & Reporting</li>
+          </ul>
+        </div>
         <div class="card"><h3>📊 Financial & Risk Advisory</h3><ul><li>Financial planning</li><li>Risk mitigation</li><li>Risk analysis</li></ul></div>
         <div class="card"><h3>📈 Market Research</h3><ul><li>Competitor analysis</li><li>Strategic growth roadmaps</li></ul></div>
-        <div class="card"><h3>📉 Data Analysis</h3><ul><li>Dashboards & insights</li><li>Data cleansing</li></ul></div>
         <div class="card"><h3>🛠 Project Management</h3><ul><li>Stakeholder management</li><li>Agile user stories</li></ul></div>
-        <div class="card"><h3>📑 Compliance & Documentation</h3><ul><li>MSME & GST guidance</li><li>Certification & regulatory support</li></ul></div>
       </div>
     </div>
   </section>
 
-  <!-- Request Form -->
+  <!-- Why Choose Us -->
+  <section id="why">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <p class="lead">We are more than consultants — we are your growth partners. Businesses choose us because we deliver:</p>
+      <ul class="why-list">
+        <li>📊 <strong>Clarity in Complexity</strong> – we simplify challenges with structured analysis and insights.</li>
+        <li>🔑 <strong>End-to-End Guidance</strong> – from startups to enterprises, we support every stage of growth.</li>
+        <li>🎯 <strong>Customized Solutions</strong> – every recommendation is tailored to your goals.</li>
+        <li>🏆 <strong>Proven Expertise</strong> – 10+ years of cross-industry experience with measurable results.</li>
+        <li>💻 <strong>Digital-First Approach</strong> – expertise in CRM, ERP, automation, and transformation.</li>
+        <li>🛡 <strong>Reliable Partnership</strong> – compliance, risk mitigation, and change management support.</li>
+        <li>📞 <strong>24/7 Support</strong> – always available when you need us most.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Client Information & Service Request (compact) -->
   <section id="request">
     <div class="container">
       <div class="form-card">
@@ -242,10 +283,22 @@
       <p class="lead">📞💬 Need help? Connect with us — 24/7 support via call & chat.</p>
 
       <div class="socials">
-        <a href="#" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
-        <a href="#" title="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.4V12h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12"/></svg></a>
-        <a href="#" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 3.4 17.4L2 22l4.7-1.2A10 10 0 1 0 20 3.9ZM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm4-5.7c-.2-.1-1-.5-1.1-.6s-.3-.1-.5.1c-.1.2-.6.6-.7.7-.1.1-.3.1-.5 0s-1-.4-1.9-1.2-1.4-1.8-1.5-2c-.1-.2 0-.3.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s0-.3-.1-.4c0-.1-.5-1.2-.7-1.7-.2-.5-.4-.4-.5-.4h-.4c-.1 0-.3.1-.5.2-.2.2-.6.6-.6 1.4s.6 1.6.7 1.7c.1.2 1.2 1.9 2.8 3 1.6 1.1 2.7 1.3 3.1 1.4.4 0 .9 0 1.2-.1.3-.1 1-.5 1.1-.9.1-.4.1-.8.1-.9 0-.1-.2-.1-.4-.2Z"/></svg></a>
-        <a href="#" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.75H4.06V20h2.88V8.75Zm.2-4.6a1.78 1.78 0 1 1-3.56 0 1.78 1.78 0 0 1 3.56 0ZM20 13.9c0-3.02-1.61-4.42-3.76-4.42-1.73 0-2.5.95-2.94 1.62V8.75H10.5c.04.95 0 11.25 0 11.25h2.8v-6.28c0-.34.02-.69.13-.93.29-.69.95-1.41 2.06-1.41 1.45 0 2.03 1.06 2.03 2.62V20H20v-6.1Z"/></svg></a>
+        <!-- Instagram -->
+        <a href="#" title="Instagram" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" title="Facebook" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.4V12h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="#" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3.9A10 10 0 0 0 3.4 17.4L2 22l4.7-1.2A10 10 0 1 0 20 3.9ZM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm4-5.7c-.2-.1-1-.5-1.1-.6s-.3-.1-.5.1c-.1.2-.6.6-.7.7-.1.1-.3.1-.5 0s-1-.4-1.9-1.2-1.4-1.8-1.5-2c-.1-.2 0-.3.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s0-.3-.1-.4c0-.1-.5-1.2-.7-1.7-.2-.5-.4-.4-.5-.4h-.4c-.1 0-.3.1-.5.2-.2.2-.6.6-.6 1.4s.6 1.6.7 1.7c.1.2 1.2 1.9 2.8 3 1.6 1.1 2.7 1.3 3.1 1.4.4 0 .9 0 1.2-.1.3-.1 1-.5 1.1-.9.1-.4.1-.8.1-.9 0-.1-.2-.1-.4-.2Z"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="#" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.75H4.06V20h2.88V8.75Zm.2-4.6a1.78 1.78 0 1 1-3.56 0 1.78 1.78 0 0 1 3.56 0ZM20 13.9c0-3.02-1.61-4.42-3.76-4.42-1.73 0-2.5.95-2.94 1.62V8.75H10.5c.04.95 0 11.25 0 11.25h2.8v-6.28c0-.34.02-.69.13-.93.29-.69.95-1.41 2.06-1.41 1.45 0 2.03 1.06 2.03 2.62V20H20v-6.1Z"/></svg>
+        </a>
       </div>
     </div>
   </section>
